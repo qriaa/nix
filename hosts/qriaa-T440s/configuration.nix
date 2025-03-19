@@ -8,6 +8,7 @@
   imports =
     [
       ./hardware-configuration.nix # Include the results of the hardware scan.
+      ../../system-modules/locale.nix
       inputs.home-manager.nixosModules.home-manager
     ];
 
@@ -25,33 +26,6 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
-  time.timeZone = "Europe/Warsaw";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "pl_PL.UTF-8";
-    LC_IDENTIFICATION = "pl_PL.UTF-8";
-    LC_MEASUREMENT = "pl_PL.UTF-8";
-    LC_MONETARY = "pl_PL.UTF-8";
-    LC_NAME = "pl_PL.UTF-8";
-    LC_NUMERIC = "pl_PL.UTF-8";
-    LC_PAPER = "pl_PL.UTF-8";
-    LC_TELEPHONE = "pl_PL.UTF-8";
-    LC_TIME = "pl_PL.UTF-8";
-  };
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "pl";
-    variant = "";
-  };
-
-  # Configure console keymap
-  console.keyMap = "pl2";
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.qriaa = {
     isNormalUser = true;
@@ -67,12 +41,37 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     neovim
+    kitty
     git
     home-manager
   #  wget
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+      qriaa = import ../../home.nix;
+    };
+  };
+
+  # DESKTOP ZONE
+  programs.hyprland = {
+    enable = true;
+  };
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    jack.enable = true;
+  };
+  # /DESKTOP ZONE
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
