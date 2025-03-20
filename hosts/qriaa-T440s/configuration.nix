@@ -9,7 +9,7 @@
     [
       ./hardware-configuration.nix # Include the results of the hardware scan.
       ../../system-modules/locale.nix
-      inputs.home-manager.nixosModules.home-manager
+      #inputs.home-manager.nixosModules.home-manager
     ];
 
   # Bootloader.
@@ -43,18 +43,18 @@
     neovim
     kitty
     git
-    home-manager
+    #home-manager
   #  wget
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      qriaa = import ../../home.nix;
-    };
-  };
+  #home-manager = {
+  #  extraSpecialArgs = { inherit inputs; };
+  #  users = {
+  #    qriaa = import ../../home.nix;
+  #  };
+  #};
 
   # DESKTOP ZONE
   programs.hyprland = {
