@@ -1,5 +1,10 @@
 { inputs, config, pkgs, ... }:
 {
+  environment.systemPackages = with pkgs; [
+    hyprlock # lock screen
+    hypridle # idle locking
+    dunst # notification daemon
+  ];
   programs.hyprland = {
     enable = true;
   };
