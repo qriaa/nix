@@ -8,7 +8,7 @@
   imports =
     [
       ./hardware-configuration.nix # Include the results of the hardware scan.
-      ../../system-modules/locale.nix
+      ../../modules/locale.nix
       #inputs.home-manager.nixosModules.home-manager
     ];
 
@@ -44,7 +44,7 @@
     kitty
     git
     #home-manager
-  #  wget
+    #wget
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
