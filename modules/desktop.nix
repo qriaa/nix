@@ -4,6 +4,7 @@
     hyprlock # lock screen
     hypridle # idle locking
     dunst # notification daemon
+    eww # widgets
   ];
   programs.hyprland = {
     enable = true;
