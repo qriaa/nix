@@ -10,6 +10,7 @@
       ./hardware-configuration.nix # Include the results of the hardware scan.
       ../../modules/locale.nix
       ../../modules/desktop.nix
+      ../../modules/graphical-essentials.nix
       #inputs.home-manager.nixosModules.home-manager
     ];
   nixpkgs.config.allowUnfree = true;
