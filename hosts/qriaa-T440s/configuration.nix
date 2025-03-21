@@ -38,6 +38,7 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
   };
+  programs.ssh.startAgent = true;
 
   programs.zsh.enable = true;
 
