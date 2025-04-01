@@ -5,6 +5,7 @@
     hypridle # idle locking
     dunst # notification daemon
     eww # widgets
+    wofi # app launcher
   ];
   programs.hyprland = {
     enable = true;
