@@ -11,7 +11,6 @@
       ../../modules/locale.nix
       ../../modules/desktop.nix
       ../../modules/graphical-essentials.nix
-      #inputs.home-manager.nixosModules.home-manager
     ];
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -35,13 +34,13 @@
   users.users.qriaa = {
     isNormalUser = true;
     description = "qriaa";
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
   };
   programs.ssh.startAgent = true;
 
-  programs.zsh.enable = true;
+  programs.fish.enable = true;
 
   environment.systemPackages = with pkgs; [
     starship

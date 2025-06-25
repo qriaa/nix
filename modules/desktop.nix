@@ -6,6 +6,7 @@
     dunst # notification daemon
     eww # widgets
     wofi # app launcher
+    walker # app launcher
   ];
   programs.hyprland = {
     enable = true;
